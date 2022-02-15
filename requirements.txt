@@ -1,0 +1,4 @@
+plotly
+global-chem
+kaleido
+rdkit-pypi
