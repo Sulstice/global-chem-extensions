@@ -41,7 +41,7 @@ setup(
     license='MPL 2.0',
     author="Suliman Sharif",
     author_email="sharifsuliman1@gmail.com",
-    url="https://www.github.com/Sulstice/global-chem",
+    url="https://www.github.com/Sulstice/global-chem-extensions",
     install_requires=REQUIREMENTS,
     long_description=long_description,
     long_description_content_type='text/markdown',
