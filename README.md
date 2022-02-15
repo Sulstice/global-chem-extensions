@@ -7,6 +7,7 @@ Global-Chem-Extensions: Functinality for applications of GlobalChem for Cheminfo
 ![Repo Size](https://img.shields.io/github/repo-size/Sulstice/global-chem)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+[![DOI](https://zenodo.org/badge/459776043.svg)](https://zenodo.org/badge/latestdoi/459776043)
 
 Global Chem is an open-source graph database and api for common and rare chemical lists using IUPAC as input and SMILES/SMARTS as output. As 
 mostly needed by myself as I search through chemical infinity.
