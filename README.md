@@ -54,5 +54,5 @@ GlobalChemExtensions().sunburst_chemical_list(test_set, save_file=False)
 ```
 
 <p align="center">
-  <img width="800" height="400" src="images/figure_1.png">
+  <img width="900" height="800" src="images/figure_1.png">
 </p>
