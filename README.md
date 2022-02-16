@@ -61,6 +61,8 @@ GlobalChemExtensions().sunburst_chemical_list(test_set, save_file=False)
 
 Conduct PCA Analysis with a SMILES list input.
 
+`dependencies`: `bokeh`, `rdkit`
+
 ```python
 
 from global_chem.global_chem import GlobalChem
