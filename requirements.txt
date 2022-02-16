@@ -2,3 +2,4 @@ plotly
 global-chem
 kaleido
 rdkit-pypi
+bokeh

@@ -7,6 +7,7 @@
 # GlobalChemExtensions Import
 
 from global_chem_extensions.sunburster.sunburster import Sunburster
+from global_chem_extensions.node_pca_analysis.node_pca_analysis import PCAAnalysis
 
 class ExtensionsError(Exception):
 
@@ -46,5 +47,33 @@ class GlobalChemExtensions(object):
 
         Sunburster(smiles_list, save_file)
 
+
+    @staticmethod
+    def node_pca_analysis(
+            smiles_list,
+            morgan_radius = 1,
+            bit_representation = 512,
+            number_of_clusters = 5,
+            number_of_components = 0.95,
+            random_state = 0,
+            file_name = 'pca_analysis.html'
+    ):
+
+        '''
+
+        Perform a pca analysis on a node within globalchem, can be extended to lists outside of the dedicated SMILES.
+
+        '''
+
+        PCAAnalysis(
+            smiles_list,
+            morgan_radius,
+            bit_representation,
+            number_of_clusters,
+            number_of_components,
+            random_state,
+            file_name,
+            save_file=False
+        )
 
 
