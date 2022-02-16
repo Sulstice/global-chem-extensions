@@ -2,4 +2,4 @@ plotly
 global-chem
 kaleido
 rdkit-pypi
-bokeh
+bokeh==1.4.0

@@ -8,7 +8,6 @@ import sys
 
 # Scientific Imports
 # ------------------
-import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
@@ -20,7 +19,6 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem.Draw import rdDepictor
 from rdkit.Chem.Draw import rdMolDraw2D
-from rdkit.Chem import Draw
 from rdkit.Chem import DataStructs
 rdDepictor.SetPreferCoordGen(True)
 
@@ -29,10 +27,7 @@ rdDepictor.SetPreferCoordGen(True)
 # ----------------
 
 from bokeh.plotting import ColumnDataSource, figure, output_notebook, output_file, show, save
-from bokeh.io import output_notebook, export_png
 from bokeh.layouts import gridplot
-
-output_notebook()
 
 # Global Configs
 # --------------
@@ -85,8 +80,7 @@ class PCAAnalysis(object):
         d2d.FinishDrawing()
         return d2d.GetDrawingText()
 
-    @staticmethod
-    def mol2fparr(mol):
+    def mol2fparr(self, mol):
 
         '''
 
@@ -100,11 +94,8 @@ class PCAAnalysis(object):
 
         '''
 
-        global morgan_radius
-        global bit_representation
-
         arr = np.zeros((0,))
-        fp = AllChem.GetMorganFingerprintAsBitVect(mol, morgan_radius, nBits=bit_representation)
+        fp = AllChem.GetMorganFingerprintAsBitVect(mol, self.morgan_radius, nBits=self.bit_representation)
         DataStructs.ConvertToNumpyArray(fp, arr)
         return arr
 
@@ -117,7 +108,7 @@ class PCAAnalysis(object):
         '''
 
         molecules_list = [Chem.MolFromSmiles(i) for i in self.smiles_list]
-        fingerprints_list = np.array([PCAAnalysis.mol2fparr(m) for m in molecules_list])
+        fingerprints_list = np.array([self.mol2fparr(m) for m in molecules_list])
 
         pca = PCA(n_components=self.number_of_components)
         chemicalspace = pca.fit_transform(fingerprints_list)
@@ -132,6 +123,7 @@ class PCAAnalysis(object):
             ids=[str(i) for i in range(0, len(self.smiles_list))],
             fill_color=kmeanc,
         )
+
         source = ColumnDataSource(kmean_data)
         plot = figure(plot_width=1000, plot_height=1000, tooltips=TOOLTIPS, title='Compounds')
         plot.circle('x', 'y',color='fill_color', size=10, fill_alpha=0.2,source=source)
@@ -140,11 +132,13 @@ class PCAAnalysis(object):
             [plot]
         ])
 
-
         if self.save_file:
 
             output_file(filename=self.file_name, title="Static HTML file")
             save(plot)
 
         else:
+            output_notebook()
             show(plot)
+
+

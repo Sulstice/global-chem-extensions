@@ -56,16 +56,27 @@ class GlobalChemExtensions(object):
             number_of_clusters = 5,
             number_of_components = 0.95,
             random_state = 0,
-            file_name = 'pca_analysis.html'
+            file_name = 'pca_analysis.html',
+            save_file = False
     ):
 
         '''
 
         Perform a pca analysis on a node within globalchem, can be extended to lists outside of the dedicated SMILES.
 
+        Arguments:
+            smiles_list (List): list of SMILES that the user wants to cluster
+            morgan_radius (Int): Morgan Radius of the chemical environment
+            bit_representation (Int): Length of the bit representation
+            number_of_clusters (Int): Number of clusters the user would like to do
+            number_of_components (Int): How many PCA vectors to analyze
+            random_state (Int):
+            file_name (String): file name the user would like to input
+            save_file (Bool): Whether the user wants to display the plot or save it.
+
         '''
 
-        PCAAnalysis(
+        pca_analysis = PCAAnalysis(
             smiles_list,
             morgan_radius,
             bit_representation,
@@ -73,7 +84,12 @@ class GlobalChemExtensions(object):
             number_of_components,
             random_state,
             file_name,
-            save_file=False
+            save_file=save_file
         )
+
+        pca_analysis.conduct_analysis()
+
+
+
 
 
