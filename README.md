@@ -71,7 +71,17 @@ gc = GlobalChem()
 gc.build_global_chem_network(print_output=False, debugger=False)
 smiles_list = list(gc.get_node_smiles('schedule_one').values())
 
-GlobalChemExtensions().node_pca_analysis(smiles_list, save_file=False)
+mol_ids = GlobalChemExtensions().node_pca_analysis(
+            smiles_list,
+            morgan_radius = 1,
+            bit_representation = 512,
+            number_of_clusters = 5,
+            number_of_components = 0.95,
+            random_state = 0,
+            file_name 'global_chem_pca.html',
+            save_file=False,
+            return_mol_ids=True,
+)
 
 ```
 

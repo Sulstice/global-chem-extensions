@@ -47,7 +47,8 @@ class PCAAnalysis(object):
                  number_of_components,
                  random_state,
                  file_name,
-                 save_file = False
+                 save_file = False,
+                 return_mol_ids = False,
         ):
 
         self.smiles_list = smiles_list
@@ -58,6 +59,9 @@ class PCAAnalysis(object):
         self.random_state = random_state
         self.file_name = file_name
         self.save_file = save_file
+        self.return_mol_ids = return_mol_ids
+
+        self.plot_mappings = {}
 
     @staticmethod
     def mol2svg(mol):
@@ -116,6 +120,11 @@ class PCAAnalysis(object):
         kmean.fit(fingerprints_list)
         kmeanc = [colormaps[i] for i in kmean.labels_]
 
+        for i in range(0, len(self.smiles_list)):
+
+            self.plot_mappings[str(i)] = self.smiles_list[i]
+
+
         kmean_data = dict(
             x=chemicalspace[:,0],
             y=chemicalspace[:,2],
@@ -140,5 +149,9 @@ class PCAAnalysis(object):
         else:
             output_notebook()
             show(plot)
+
+        if self.return_mol_ids:
+            return self.plot_mappings
+
 
 

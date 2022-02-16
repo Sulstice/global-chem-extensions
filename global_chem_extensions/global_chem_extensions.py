@@ -57,7 +57,8 @@ class GlobalChemExtensions(object):
             number_of_components = 0.95,
             random_state = 0,
             file_name = 'pca_analysis.html',
-            save_file = False
+            save_file = False,
+            return_mol_ids = False,
     ):
 
         '''
@@ -73,6 +74,7 @@ class GlobalChemExtensions(object):
             random_state (Int):
             file_name (String): file name the user would like to input
             save_file (Bool): Whether the user wants to display the plot or save it.
+            return_mol_ids (Bool): Return the molecule IDS for the user to mine.
 
         '''
 
@@ -84,10 +86,14 @@ class GlobalChemExtensions(object):
             number_of_components,
             random_state,
             file_name,
-            save_file=save_file
+            save_file=save_file,
+            return_mol_ids = False
         )
 
-        pca_analysis.conduct_analysis()
+        return_mol_ids = pca_analysis.conduct_analysis()
+
+        if return_mol_ids:
+            return return_mol_ids
 
 
 
