@@ -91,3 +91,22 @@ mol_ids = GlobalChemExtensions().node_pca_analysis(
   <img width="900" height="800" src="images/pca_analysis.gif">
 </p>
 
+#### Conversion From Amino Acid to SMILES and Back Again
+
+Convert from Amino Acids to SMILES and Back again just using a series of tricks of regexes :)
+
+```python
+
+amino_acid_test = ['RSTEFGHIKLADPQ']
+smiles = GlobalChemExtensions().amino_acids_to_smiles(amino_acid_test)
+print (smiles)
+
+>>>
+['NC(CCCCNC(N)=N)C(NC(CO)C(NC(C(C)([H])O)C(NC(CCC(O)=O)C(NC(CC1=CC=CC=C1)C(NC([H])C(NC(CC1=CNC=N1)C(NC(C(CC)([H])C)C(NC(CCCCN)C(NC(CC(C)C)C(NC(C)C(NC(CC(O)=O)C(NC(C2CCCN2)C(NC(CCC(N)=O)C(NCC(O)=O)=O)=O)=O)=O)=O)=O)=O)=O)=O)=O)=O)=O)=O)=O']
+
+amino_acid = GlobalChemExtensions().smiles_to_amino_acids(smiles)
+print (amino_acid)
+>>>
+['RSTEFGHIKLADPQ', None]
+
+```
