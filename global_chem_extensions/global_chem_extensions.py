@@ -8,6 +8,7 @@
 
 from global_chem_extensions.sunburster.sunburster import Sunburster
 from global_chem_extensions.node_pca_analysis.node_pca_analysis import PCAAnalysis
+from global_chem_extensions.amino_acid_converter.amino_acid_converter import AminoAcidConverter
 
 class ExtensionsError(Exception):
 
@@ -94,6 +95,60 @@ class GlobalChemExtensions(object):
 
         if return_mol_ids:
             return return_mol_ids
+
+    @staticmethod
+    def smiles_to_amino_acids(
+            smiles_list
+    ):
+
+        '''
+
+        Arguments:
+            smiles_list (List): List of the SMILES
+
+        Returns:
+            converted_list (List): Converted list of the SMILES to the amino acid converters
+
+        '''
+
+        converter = AminoAcidConverter()
+
+        converted_list = []
+
+        for smiles in smiles_list:
+
+            converted_list.append(
+                converted_list.append(converter.convert_smiles_to_amino_acid_sequence(smiles))
+            )
+
+        return converted_list
+
+    @staticmethod
+    def amino_acids_to_smiles(
+            amino_acid_list
+    ):
+
+        '''
+
+        Arguments:
+            amino_acid_list (List): List of the Amino Acids
+
+        Returns:
+            converted_list (List): Converted list of the SMILES to the amino acid converters
+
+        '''
+
+        converter = AminoAcidConverter()
+
+        converted_list = []
+
+        for amino_acid in amino_acid_list:
+
+            converted_list.append(
+                converter.convert_amino_acid_sequence_to_smiles(amino_acid)
+            )
+
+        return converted_list
 
 
 
