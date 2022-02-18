@@ -114,9 +114,15 @@ print (amino_acid)
 ```
 #### Science Open Source Database Monitors
 
-Check the Open Source Database Monitors for Heartbeats
+This uses
+Check the Open Source Database Monitors for Heartbeats: `www.chemistrydb.com`
 
-gc = GlobalChemExtensions.check_status_on_open_source_databases()
+```python
+
+successes, failures = GlobalChemExtensions.check_status_on_open_source_databases()
+
+```
+
 
 ```
  Zinc 15                                                  OpenFDA                                                      
