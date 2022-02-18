@@ -6,9 +6,21 @@
 
 # GlobalChemExtensions Import
 
+# Visualization
+
 from global_chem_extensions.sunburster.sunburster import Sunburster
+
+# Analytics
+
 from global_chem_extensions.node_pca_analysis.node_pca_analysis import PCAAnalysis
+
+# Converters
+
 from global_chem_extensions.amino_acid_converter.amino_acid_converter import AminoAcidConverter
+
+# Monitors
+
+from global_chem_extensions.database_monitor.database_monitor import DatabaseMonitor
 
 class ExtensionsError(Exception):
 
@@ -150,7 +162,14 @@ class GlobalChemExtensions(object):
 
         return converted_list
 
+    @staticmethod
+    def check_status_on_open_source_databases():
 
+        '''
 
+        Check the Status on Databases
 
+        '''
 
+        database_monitor = DatabaseMonitor()
+        database_monitor.heartbeat()

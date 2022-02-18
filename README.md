@@ -112,7 +112,35 @@ print (amino_acid)
 ['RSTEFGHIKLADPQ', None]
 
 ```
+#### Science Open Source Database Monitors
+
+Check the Open Source Database Monitors for Heartbeats
+
+gc = GlobalChemExtensions.check_status_on_open_source_databases()
+
+```
+ Zinc 15                                                  OpenFDA                                                      
+ Zinc 20                                                  Metabolites Biological Role                                  
+ PubChem                                                  MetaboAnalyst                                                
+ NIST Chemistry Webhook                                   Adverse Drug Reaction Classification System                  
+ Chem Exper                                               Metabolism and Transport Database                            
+ NMR Shift Database                                       Ecology Toxicity                                             
+ Drug Bank                                                Human and Environment Risk Assessment                        
+ Binding Database                                         International Toxicity Information for Risk Assesments       
+ Spectral Database for Organic Compounds                  Japan Exisiting Database                                     
+ Sider                                                    National Pesticide Center                                    
+ ChemSpider                                               Pesticide Info                                               
+ Stitch                                                   Kyoto Encyclopedia of Genes and Genomes                      
+ CardPred                                                 Hetereocycles                                                
+ Comparative Toxicogenomics Database                      Chemical Resolver                                            
+ AMED Cardiotoxicity Database                             LookChem                                                     
+ Tox21                                                    Lipid Maps                                                   
+ Drug Safety Analysis System                             
+ 
+ ```                                                           
+                                                         
 
 
 ## License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSulstice%2Fglobal-chem-extensions.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSulstice%2Fglobal-chem-extensions?ref=badge_large)
