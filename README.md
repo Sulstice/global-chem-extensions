@@ -123,7 +123,6 @@ successes, failures = GlobalChemExtensions.check_status_on_open_source_databases
 
 ```
 
-
 ```
  Zinc 15                                                  OpenFDA                                                      
  Zinc 20                                                  Metabolites Biological Role                                  
@@ -145,7 +144,32 @@ successes, failures = GlobalChemExtensions.check_status_on_open_source_databases
  
  ```                                                           
                                                          
+#### Filtering a List of SMILES by Common Drug Design Filters
 
+```python
+
+from global_chem_extensions.global_chem_extensions import GlobalChemExtensions
+from global_chem.global_chem import GlobalChem
+
+
+gc = GlobalChem()
+gc.build_global_chem_network(print_output=False, debugger=False)
+smiles_list = list(gc.get_node_smiles('emerging_perfluoroalkyls').values())
+
+filtered_smiles = GlobalChemExtensions.filter_smiles_by_criteria(
+    smiles_list,
+    lipinski_rule_of_5=True,
+    ghose=False,
+    veber=False,
+    rule_of_3=False,
+    reos=False,
+    drug_like=False,
+    pass_all_filters=False
+)
+
+print (len('Filtered SMILES: %s' % len(filtered_smiles)))
+
+```
 
 ## License
 
