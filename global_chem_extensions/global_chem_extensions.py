@@ -12,10 +12,12 @@ from global_chem_extensions.sunburster.sunburster import Sunburster
 
 # Analytics
 
+from global_chem_extensions.drug_design_filters.drug_design_filters import DrugDesignFilters
 from global_chem_extensions.node_pca_analysis.node_pca_analysis import PCAAnalysis
 
 # Converters
 
+from global_chem_extensions.networkx_adapter.networkx_adapter import NetworkxAdapter
 from global_chem_extensions.amino_acid_converter.amino_acid_converter import AminoAcidConverter
 
 # Monitors
@@ -173,3 +175,45 @@ class GlobalChemExtensions(object):
 
         database_monitor = DatabaseMonitor()
         database_monitor.heartbeat()
+
+
+    @staticmethod
+    def filter_smiles_by_criteria(
+            smiles_list,
+            lipinski_rule_of_5=False,
+            ghose=False,
+            veber=False,
+            rule_of_3=False,
+            reos=False,
+            drug_like=False,
+            pass_all_filters=False
+    ):
+
+        '''
+
+        Arguments:
+            lipinski_rule_of_5 (Bool): Lipinski Rule of 5 Criteria
+            ghose (Bool): Ghose Filter,
+            veber (Bool): Veber Filter,
+            rule_of_3 (Bool): Rule of 3 Filter
+            reos (Bool): Reos Filter
+            drug_like (Bool): Drug Like Filter
+            pass_all_filters (Bool): whether the user would like to pass all the filters
+
+        Returns:
+
+            the filtered data set
+        '''
+
+        drug_design_filters = DrugDesignFilters(
+            smiles_list,
+            lipinski_rule_of_5=lipinski_rule_of_5,
+            ghose=ghose,
+            veber=veber,
+            rule_of_3=rule_of_3,
+            reos=reos,
+            drug_like=drug_like,
+            pass_all_filters=pass_all_filters
+        )
+
+        return drug_design_filters.filter()
