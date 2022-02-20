@@ -8,21 +8,21 @@
 
 # Visualization
 
-from global_chem_extensions.sunburster.sunburster import Sunburster
+from global_chem_extensions.analysis_tools.sunburster.sunburster import Sunburster
 
 # Analytics
 
-from global_chem_extensions.drug_design_filters.drug_design_filters import DrugDesignFilters
-from global_chem_extensions.node_pca_analysis.node_pca_analysis import PCAAnalysis
+from global_chem_extensions.analysis_tools.drug_design_filters.drug_design_filters import DrugDesignFilters
+from global_chem_extensions.analysis_tools.node_pca_analysis.node_pca_analysis import PCAAnalysis
 
 # Converters
 
-from global_chem_extensions.networkx_adapter.networkx_adapter import NetworkxAdapter
-from global_chem_extensions.amino_acid_converter.amino_acid_converter import AminoAcidConverter
+from global_chem_extensions.software_adapters.networkx_adapter.networkx_adapter import NetworkxAdapter
+from global_chem_extensions.language_adapters.amino_acid_converter.amino_acid_converter import AminoAcidAdapter
 
 # Monitors
 
-from global_chem_extensions.database_monitor.database_monitor import DatabaseMonitor
+from global_chem_extensions.monitoring_services.database_monitor.database_monitor import DatabaseMonitor
 
 class ExtensionsError(Exception):
 
@@ -125,7 +125,7 @@ class GlobalChemExtensions(object):
 
         '''
 
-        converter = AminoAcidConverter()
+        converter = AminoAcidAdapter()
 
         converted_list = []
 
@@ -217,3 +217,21 @@ class GlobalChemExtensions(object):
         )
 
         return drug_design_filters.filter()
+
+    @staticmethod
+    def convert_to_networkx(network):
+
+        '''
+
+        Arguments:
+            network (Dict): Convert to a networkx object for interoperability
+
+        Returns:
+            converted_network (Graph Object): Networkx Graph object
+
+        '''
+
+        network_adapter = NetworkxAdapter()
+        converted_network = network_adapter.convert(network)
+
+        return converted_network

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 #
-# GlobalChemExtensions - Amino Acid Converter
+# GlobalChemExtensions - Amino Acid Adapter
 
 # -------------------------------------------
 
-class AminoAcidConverter(object):
+class AminoAcidAdapter(object):
 
     __version__ = '0.0.1'
 

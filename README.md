@@ -171,6 +171,18 @@ print (len('Filtered SMILES: %s' % len(filtered_smiles)))
 
 ```
 
+#### Convert to a Networkx Graph Object
+
+```python
+
+gc = GlobalChem()
+gc.build_global_chem_network(print_output=False, debugger=False)
+network = gc.network
+networkx_graph = GlobalChemExtensions.convert_to_networkx(network)
+print (networkx_graph.nodes.data())
+
+```
+
 ## License
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSulstice%2Fglobal-chem-extensions.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSulstice%2Fglobal-chem-extensions?ref=badge_large)
