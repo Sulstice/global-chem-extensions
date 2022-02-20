@@ -1,6 +1,5 @@
-Global-Chem-Extensions: Functinality for applications of GlobalChem for Cheminformaticians.
-===========================================================================================
-
+Global-Chem-Extensions: Common Cheminformatic Functionality using the GlobalChem Graph Network & Others
+=======================================================================================================
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 ![Python](https://img.shields.io/badge/python-3.6-blue.svg)
