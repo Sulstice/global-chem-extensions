@@ -116,6 +116,7 @@ class DeepLayerScatter(object):
         layers_labels = [ str(i) for i in range(1, self.max_layer + 1 ) ]
 
         dimensions = []
+        colors = []
 
         for index, layer in enumerate(layers_labels):
 
@@ -123,6 +124,17 @@ class DeepLayerScatter(object):
 
             categories['label'] = layer
             categories['values'] = layer_object[index]
+
+            if index == 1:
+                colors += [ 'purple' ] * self.node_counts[0]
+
+            elif index == 2:
+                colors += [ 'lightseagreen' ] * self.node_counts[1]
+
+            else:
+                colors += [ 'gold' ] * self.node_counts[index - 1]
+
+
             categories['categoryorder'] = 'category ascending'
 
             dimensions.append(categories)
@@ -130,24 +142,23 @@ class DeepLayerScatter(object):
         fig = go.Figure(go.Parcats(
             dimensions=dimensions,
             arrangement='freeform',
-            line={
-                # 'colorscale': px.colors.sequential.Turbo,
-
-            },
+            line = dict(
+                color = colors,
+            ),
             hoveron='color',
             hoverinfo='count+probability',
-            labelfont={'size': 20, 'family': 'Times'},
-            tickfont={'size': 20, 'family': 'Times'},
+            labelfont={'size': 10, 'family': 'Times'},
+            tickfont={'size': 10, 'family': 'Times'},
         ))
 
         fig.update_layout(
             title_text="Deep Layer Scatter",
-            title_font=dict(size=34, family='Arial'),
+            title_font=dict(size=24, family='Arial'),
             template='simple_white',
             xaxis_tickformat = 'i',
             bargap=0.4, # gap between bars of adjacent location coordinates,
             height=800,
-            width=800
+            width=1200
         )
 
         if self.save_file:
