@@ -9,6 +9,7 @@
 # Visualization
 
 from global_chem_extensions.analysis_tools.sunburster.sunburster import Sunburster
+from global_chem_extensions.analysis_tools.deep_layer_scatter.deep_layer_scatter import DeepLayerScatter
 
 # Analytics
 
@@ -235,3 +236,16 @@ class GlobalChemExtensions(object):
         converted_network = network_adapter.convert(network)
 
         return converted_network
+
+    @staticmethod
+    def scatter_deep_layer_network(deep_layer_network, save_file=False):
+
+        '''
+
+        Arguments:
+            deep_layer_network (Object): DGN coming from GlobalChem
+
+        '''
+
+        deep_layer_scatter = DeepLayerScatter(deep_layer_network, save_file=save_file)
+        deep_layer_scatter.scatter()
